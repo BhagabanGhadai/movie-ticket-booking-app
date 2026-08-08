@@ -2,7 +2,8 @@ export interface IUserDocument{
     name:string;
     email:string;
     phone:string;
-    avatar?:string;
+    avatar?
+    :string;
     currentStatus:ECurrentStatus;
     encryptedOtp?:string;
     otpExpiry?:Date;
@@ -16,10 +17,7 @@ export interface IUserDocument{
     blockedAt?:Date;
     blockedReason?:string;
     blockedUntil?:Date;
-    isDeleted?:boolean;
     deletedAt?:Date;
-    deletedReason?:string;
-    deletedUntil?:Date;
 }
 
 export enum ECurrentStatus {

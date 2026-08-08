@@ -57,18 +57,8 @@ export class User implements IUserDocument {
     @Prop({type:Date,default:null})
     blockedUntil:Date;
     
-    @Prop({type:Boolean,default:false})
-    isDeleted:boolean;
-    
     @Prop({type:Date,default:null})
     deletedAt:Date;
-    
-    @Prop({type:String,default:null})
-    deletedReason:string;
-    
-    @Prop({type:Date,default:null})
-    deletedUntil:Date;
-    
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
