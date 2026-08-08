@@ -1,11 +1,13 @@
 import * as z from 'zod';
 import { ECurrentStatus } from './user.interface';
+import { Types } from 'mongoose';
 
 export const createUserSchema = z.object({
     mobile: z.string().min(10, "Mobile number must be at least 10 digits long"),
 });
 
 export const updateUserSchema = z.object({
+    _id: z.string().transform((id) => new Types.ObjectId(id)),
     name: z.string().min(3, "Name must be at least 3 characters long").optional(),
     email: z.string().email("Invalid email address").optional(),
     avatar: z.string().optional(),
