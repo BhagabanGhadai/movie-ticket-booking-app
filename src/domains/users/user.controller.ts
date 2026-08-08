@@ -7,7 +7,6 @@ import { Types } from "mongoose";
 export class UserController{
     constructor( private readonly userService:UserService){}
     
-    
     @Post()
     @HttpCode(201)
     async createUser(@Body() createUserDto:CreateUserSchema){
