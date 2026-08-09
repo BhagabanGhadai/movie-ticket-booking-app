@@ -1,6 +1,6 @@
 import { Types } from "mongoose";
 import { UserRepository } from "./user.repository";
-import { CreateUserSchema, GetAllUserSchema, UpdateUserSchema } from "./user.schema";
+import { CreateUserSchema, GetAllUserSchema, IdSchema, UpdateUserSchema } from "./user.schema";
 
 export class UserService{
     constructor(private readonly userRepository:UserRepository){}
@@ -13,15 +13,15 @@ export class UserService{
 
     }
 
-    async getUser(_id:Types.ObjectId){
-        
+    async getUser(idDto:IdSchema){
+        return await this.userRepository.getOne(idDto)
     }
 
     async updateUser(updateUserSchema:UpdateUserSchema){
         
     }
 
-    async deleteUser(_id:Types.ObjectId){
-        
+    async deleteUser(idDto:IdSchema){
+        return await this.userRepository.softDelete(idDto);
     }
 }

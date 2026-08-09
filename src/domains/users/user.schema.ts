@@ -28,6 +28,11 @@ export const getAllUserSchema = z.object({
     return true;
 })
 
+export const idSchema = z.object({
+    _id: z.string().transform((id) => new Types.ObjectId(id)),
+});
+
 export type CreateUserSchema = z.infer<typeof createUserSchema>;
 export type UpdateUserSchema = z.infer<typeof updateUserSchema>;
 export type GetAllUserSchema = z.infer<typeof getAllUserSchema>;
+export type IdSchema = z.infer<typeof idSchema>;
