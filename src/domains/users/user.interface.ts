@@ -1,7 +1,7 @@
 export interface IUserDocument{
     name:string;
     email:string;
-    phone:string;
+    mobile:string;
     avatar?:string;
     currentStatus:ECurrentStatus;
     encryptedOtp?:string;

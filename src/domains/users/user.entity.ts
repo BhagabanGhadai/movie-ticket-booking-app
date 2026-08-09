@@ -13,7 +13,7 @@ export class User implements IUserDocument {
     email: string;
 
     @Prop({type:String,required:true,unique:true})
-    phone: string;
+    mobile: string;
 
     @Prop({type:String})
     avatar: string;
