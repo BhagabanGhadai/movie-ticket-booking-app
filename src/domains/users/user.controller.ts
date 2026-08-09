@@ -1,13 +1,15 @@
-import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UsePipes } from "@nestjs/common";
 import { UserService } from "./user.service";
-import { CreateUserSchema, GetUserSchema, UpdateUserSchema } from "./user.schema";
+import { createUserSchema, CreateUserSchema, GetUserSchema, UpdateUserSchema } from "./user.schema";
 import { Types } from "mongoose";
+import { ZodValidationPipe } from "src/core/pipes";
 
 @Controller("user")
 export class UserController{
     constructor( private readonly userService:UserService){}
     
     @Post()
+    @UsePipes(new ZodValidationPipe(createUserSchema))
     @HttpCode(201)
     async createUser(@Body() createUserDto:CreateUserSchema){
         return this.userService.createUser(createUserDto);
