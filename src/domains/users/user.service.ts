@@ -1,6 +1,6 @@
 import { Types } from "mongoose";
 import { UserRepository } from "./user.repository";
-import { CreateUserSchema, GetUserSchema, UpdateUserSchema } from "./user.schema";
+import { CreateUserSchema, GetAllUserSchema, UpdateUserSchema } from "./user.schema";
 
 export class UserService{
     constructor(private readonly userRepository:UserRepository){}
@@ -9,7 +9,7 @@ export class UserService{
 
     }
 
-    async getAllUser(getUserSchema:GetUserSchema){
+    async getAllUser(getUserSchema:GetAllUserSchema){
 
     }
 

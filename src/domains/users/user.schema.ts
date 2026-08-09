@@ -13,7 +13,7 @@ export const updateUserSchema = z.object({
     avatar: z.string().optional(),
 });
 
-export const getUserSchema = z.object({
+export const getAllUserSchema = z.object({
     currentStatus: z.enum(ECurrentStatus).optional(),
     search: z.string().optional(),
     page: z.number().optional(),
@@ -30,4 +30,4 @@ export const getUserSchema = z.object({
 
 export type CreateUserSchema = z.infer<typeof createUserSchema>;
 export type UpdateUserSchema = z.infer<typeof updateUserSchema>;
-export type GetUserSchema = z.infer<typeof getUserSchema>;
+export type GetAllUserSchema = z.infer<typeof getAllUserSchema>;

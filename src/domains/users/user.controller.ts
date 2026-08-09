@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UsePipes } from "@nestjs/common";
 import { UserService } from "./user.service";
-import { createUserSchema, CreateUserSchema, GetUserSchema, UpdateUserSchema } from "./user.schema";
+import { createUserSchema, CreateUserSchema, GetAllUserSchema, UpdateUserSchema,getAllUserSchema,updateUserSchema} from "./user.schema";
 import { Types } from "mongoose";
 import { ZodValidationPipe } from "src/core/pipes";
 
@@ -9,15 +9,16 @@ export class UserController{
     constructor( private readonly userService:UserService){}
     
     @Post()
-    @UsePipes(new ZodValidationPipe(createUserSchema))
     @HttpCode(201)
+    @UsePipes(new ZodValidationPipe(createUserSchema))
     async createUser(@Body() createUserDto:CreateUserSchema){
         return this.userService.createUser(createUserDto);
     }
 
     @Get()
     @HttpCode(200)
-    async getAllUser(@Body() getUserDto:GetUserSchema){
+    @UsePipes(new ZodValidationPipe(getAllUserSchema))
+    async getAllUser(@Body() getUserDto:GetAllUserSchema){
         return this.userService.getAllUser(getUserDto);
     }
 
@@ -29,6 +30,7 @@ export class UserController{
 
     @Put(":_id")
     @HttpCode(200)
+    @UsePipes(new ZodValidationPipe(updateUserSchema))
     async updateUser(@Body() updateUserDto:UpdateUserSchema){
         return this.userService.updateUser(updateUserDto);
     }
