@@ -1,5 +1,5 @@
 import { BaseRepository } from "src/core/repositories";
-import { User, UserDocument } from "./entities/user";
+import { User, UserDocument } from "./user.entity";
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
