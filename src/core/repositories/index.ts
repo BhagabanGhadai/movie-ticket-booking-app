@@ -10,7 +10,7 @@ import {
     AggregateOptions
 } from "mongoose";
 
-export class BaseRepository<T> {
+export abstract class BaseRepository<T> {
     constructor(
         private readonly model: Model<T>,
     ) {

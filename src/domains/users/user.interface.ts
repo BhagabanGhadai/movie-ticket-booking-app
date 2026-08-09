@@ -19,6 +19,10 @@ export interface IUserDocument{
     deletedAt?:Date;
 }
 
+export interface IUserController{
+    
+}
+
 export enum ECurrentStatus {
     active = 'active',
     inactive = 'inactive',
