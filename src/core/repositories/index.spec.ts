@@ -1,6 +1,8 @@
 import { BaseRepository } from "./index";
 import { Model, ClientSession, PipelineStage } from "mongoose";
 
+class TestRepository extends BaseRepository<{ name: string }> {}
+
 describe("BaseRepository Transactions", () => {
     let repository: BaseRepository<{ name: string }>;
     
@@ -42,7 +44,7 @@ describe("BaseRepository Transactions", () => {
 
     beforeEach(() => {
         jest.clearAllMocks();
-        repository = new BaseRepository<{ name: string }>(mockModel as unknown as Model<{ name: string }>);
+        repository = new TestRepository(mockModel as unknown as Model<{ name: string }>);
     });
 
     it("should start a session via startSession method", async () => {
