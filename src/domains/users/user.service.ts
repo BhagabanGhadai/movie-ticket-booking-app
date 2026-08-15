@@ -2,7 +2,9 @@ import { Types } from "mongoose";
 import { UserRepository } from "./user.repository";
 import { CreateUserSchema, GetAllUserSchema, IdSchema, UpdateUserSchema } from "./user.schema";
 import { UserDocument } from "./user.entity";
+import { Injectable } from "@nestjs/common";
 
+@Injectable()
 export class UserService{
     constructor(private readonly userRepository:UserRepository){}
 
