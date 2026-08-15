@@ -51,12 +51,12 @@ export class GlobalExceptionFilter implements ExceptionFilter {
 
     return response.status(statusCode).send({
       success: false,
+      message,
       error: {
-        code,
-        message,
         ...(details !== undefined && { details }),
       },
       meta: {
+        code,
         requestId,
         timestamp: new Date().toISOString(),
         path: request.url,
