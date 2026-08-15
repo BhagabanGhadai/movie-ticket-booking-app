@@ -22,9 +22,8 @@ export abstract class BaseRepository<T> {
     }
 
     async create(data: Partial<T>, options?: SaveOptions): Promise<T> {
-        const createMethod = this.model.create as unknown as (docs: unknown[], options?: SaveOptions) => Promise<T[]>;
-        const result = await createMethod([data], options);
-        return result[0];
+        const result = await (this.model.create as any)([data], options);
+        return (result[0] as unknown) as T;
     }
 
     async getOne(filter: QueryFilter<T>, options?: QueryOptions): Promise<T | null> {
