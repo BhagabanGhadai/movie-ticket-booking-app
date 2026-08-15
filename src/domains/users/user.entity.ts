@@ -6,13 +6,13 @@ export type UserDocument = HydratedDocument<User>;
 
 @Schema({timestamps:true})
 export class User implements IUserDocument {
-    @Prop({type:String,required:true})
+    @Prop({type:String})
     name: string;
 
-    @Prop({type:String,required:true,unique:true})
+    @Prop({type:String})
     email: string;
 
-    @Prop({type:String,required:true,unique:true})
+    @Prop({type:String,unique:true,required:true})
     mobile: string;
 
     @Prop({type:String})

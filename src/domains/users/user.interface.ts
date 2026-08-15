@@ -1,6 +1,6 @@
 export interface IUserDocument{
-    name:string;
-    email:string;
+    name?:string;
+    email?:string;
     mobile:string;
     avatar?:string;
     currentStatus:ECurrentStatus;
