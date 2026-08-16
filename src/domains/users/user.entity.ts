@@ -21,7 +21,7 @@ export class User implements IUserDocument {
     @Prop({type:String,enum:ECurrentStatus,default:ECurrentStatus.inactive})
     currentStatus:ECurrentStatus;
 
-    @Prop({type:String,minLength:6,maxLength:6,default:null})
+    @Prop({type:String,default:null})
     encryptedOtp:string;
 
     @Prop({type:Date,default:null})
