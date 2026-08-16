@@ -3,12 +3,14 @@ import { UserService } from "./user.service";
 import { createUserSchema, CreateUserSchema, GetAllUserSchema, UpdateUserSchema,getAllUserSchema,updateUserSchema, idSchema, IdSchema} from "./user.schema";
 import { ZodValidationPipe } from "src/core/pipes";
 import { UserDocument } from "./user.entity";
+import { Public } from "src/core/decorators";
 
 @Controller("user")
 export class UserController{
     constructor( private readonly userService:UserService){}
     
     @Post()
+    @Public()
     @HttpCode(201)
     @UsePipes(new ZodValidationPipe<CreateUserSchema>(createUserSchema))
     async createUser(@Body() createUserDto:CreateUserSchema):Promise<UserDocument>{
