@@ -1,7 +1,6 @@
-import { Body, Controller, Delete, Get, HttpCode, Param, Patch, Post, Put, UsePipes } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpCode, Param, Patch, Post, UsePipes } from "@nestjs/common";
 import { UserService } from "./user.service";
 import { createUserSchema, CreateUserSchema, GetAllUserSchema, UpdateUserSchema,getAllUserSchema,updateUserSchema, idSchema, IdSchema} from "./user.schema";
-import { Types } from "mongoose";
 import { ZodValidationPipe } from "src/core/pipes";
 import { UserDocument } from "./user.entity";
 
