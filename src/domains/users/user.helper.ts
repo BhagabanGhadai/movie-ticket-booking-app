@@ -16,15 +16,14 @@ export class UserHelper{
         return bcrypt.compare(str,hashedStr)
     }
 
-    private async generateOtp():Promise<string>{
+    private generateOtp():string{
         return Math.floor(100000 + Math.random() * 900000).toString();
     }
 
     async generateUserPayload(user:CreateUserSchema):Promise<UserDocument>{
-        const otp = await this.generateOtp()
         return {
             mobile:user.mobile,
-            encryptedOtp:await this.hashString(otp),
+            encryptedOtp:await this.hashString(this.generateOtp()),
             otpExpiry:new Date(Date.now() + Number(this.configService.get<number>("OTP_EXPIRES_IN_SEC")) * 1000),
             lastOtpSentAt:new Date(),
             otpSentCount:1,
